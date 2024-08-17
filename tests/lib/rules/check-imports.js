@@ -1,6 +1,6 @@
 /**
- * @fileoverview This rule ensures that all import statements within a module of a feature-sliced design adhere to the architecture&#39;s guidelines. It validates that imports are relative and contained within their respective feature modules to maintain modular integrity. The rule prevents imports that reach out of the module&#39;s scope, reinforcing tight coupling within features and loose coupling between them.&#34;
- * @author Davit
+ * @fileoverview feature sliced relative path checker
+ * @author timur
  */
 "use strict";
 
@@ -16,16 +16,33 @@ const rule = require("../../../lib/rules/check-imports"),
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester();
+const ruleTester = new RuleTester({
+  parserOptions: {ecmaVersion: 6, sourceType: 'module'}
+});
 ruleTester.run("check-imports", rule, {
   valid: [
-    // give me some code that won't trigger a warning
+    {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '../../model/slices/addCommentFormSlice'",
+      errors: [],
+    },
   ],
 
   invalid: [
     {
-      code: "",
-      errors: [{ message: "Fill me in.", type: "Me too" }],
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/entities/Article/model/slices/addCommentFormSlice'",
+      errors: [{ message: "В рамках одного слайса все пути должны быть относительными"}],
+      options: [
+        {
+          alias: '@'
+        }
+      ]
+    },
+    {
+      filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\Article',
+      code: "import { addCommentFormActions, addCommentFormReducer } from 'entities/Article/model/slices/addCommentFormSlice'",
+      errors: [{ message: "В рамках одного слайса все пути должны быть относительными"}],
     },
   ],
 });
