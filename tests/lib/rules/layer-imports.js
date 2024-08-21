@@ -74,19 +74,19 @@ ruleTester.run("layer-imports", rule, {
   invalid: [
     {
       filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/features/Articl'",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/features/Article'",
       errors: [{ message: "The layer can only import the layers below it (shared, entities, features, widgets, pages, app)"}],
       options: aliasOptions,
     },
     {
       filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\features\\providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Articl'",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Article'",
       errors: [{ message: "The layer can only import the layers below it (shared, entities, features, widgets, pages, app)"}],
       options: aliasOptions,
     },
     {
       filename: 'C:\\Users\\tim\\Desktop\\javascript\\production_project\\src\\entities\\providers',
-      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Articl'",
+      code: "import { addCommentFormActions, addCommentFormReducer } from '@/widgets/Article'",
       errors: [{ message: "The layer can only import the layers below it (shared, entities, features, widgets, pages, app)"}],
       options: aliasOptions,
     },

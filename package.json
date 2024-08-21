@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-feature-slice-import-manager",
-  "version": "0.1.6",
+  "version": "0.1.9",
   "description": "This ESLint plugin enforces best practices and consistent import ordering specific to the feature-sliced design architecture. It ensures that imports are structured and layered according to the feature-sliced methodology, promoting clean code separation and modular architecture. Ideal for projects seeking to maintain a scalable and organized codebase.",
   "keywords": [
     "eslint",
